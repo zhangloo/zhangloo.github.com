@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        body{
+            background: #000;
+        }
+        #list{
+            width: 700px;
+            height: 300px;
+            position: absolute;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin:auto;
+            font-size: 30px;
+            color: #fff;
+            font-weight: bold;
+            font-family:'楷体';
+        }
+        li{
+            float: left;
+            opacity:0;
+            -webkit-transition:0.3s all ease;
+            text-shadow:0 0 100px red;
+        }
+
+
+    </style>
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/fzfunction.js"></script>
+    <script>
+        domReady(function () {
+            //首屏
+            var oList=document.getElementById('list');
+            var oA=oList.children[0];
+            var str='天若赐我辉煌,我定比天猖狂，有朝一日虎归山，定要血染半边天，有朝一日龙得水，定要长江水倒流，血雨腥风，扬眉淡笑，指枪问穷寇，谁尚敢与我一战否？苍天弃吾，吾宁成魔；天要灭我，我便逆天。世道尽灭,天地混沌,又与我何干。脚踩生灵，手掌生死，传说不朽，王者不败。雄鹰下山，猛虎冲天，谁主沉浮，唯我王帆。';
+            var arr=str.split('');
+            for(var i=0; i<arr.length; i++){
+                var oLi=document.createElement('li');
+                oLi.innerHTML=arr[i];
+                oList.appendChild(oLi);
+            }
+            var aLi=oList.children;
+            var i=1;
+            var timer=setInterval(function () {
+                i++;
+                aLi[i].style.opacity=1;
+                if(i>str.length){
+                    clearInterval(timer);
+                    oA.pause();
+                }
+            },100);
+        })
+
+
+
+    </script>
+</head>
+<body>
+<!--首屏-->
+<ul id="list">
+    <audio autoplay loop src=audio/539120cd46a8e.mp3></audio>
+
+</ul>
+</body>
+</html>
