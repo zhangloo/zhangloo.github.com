@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>成者为王</title>
+    <title>Title</title>
     <style>
         *{
             margin: 0;
@@ -28,34 +28,50 @@
             font-weight: bold;
             font-family:'楷体';
         }
-
         li{
-            opacity:0;
             float: left;
+            opacity:0;
+            -webkit-transition:0.3s all ease;
+            text-shadow:0 0 100px red;
         }
+
 
     </style>
     <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/fzfunction.js"></script>
     <script>
-        $(function () {
-            var str='天若赐我辉煌,我定比天猖狂，有朝一日虎归山，定要血染半边天，有朝一日龙得水，定要长江水倒流，血雨腥风，扬眉淡笑，指枪问穷寇，谁尚敢与我一战否？苍天弃吾，吾宁成魔；天要灭我，我便逆天。世道尽灭,天地混沌,又与我何干。脚踩生灵，手掌生死，传说不朽，王者不败。雄鹰下山，猛虎冲天，谁主沉浮，唯我王帆。从此一个伟大、低调的不行的web前端工程师就这样诞生了';
-            for(var i=0;i<str.length;i++){
-                var oLi=$('<li></li>');
-                $('#list').append(oLi);
-                oLi.html(str.charAt(i));
-
+        domReady(function () {
+            //首屏
+            var oList=document.getElementById('list');
+            var oA=oList.children[0];
+            var str='天若赐我辉煌,我定比天猖狂，有朝一日虎归山，定要血染半边天，有朝一日龙得水，定要长江水倒流，血雨腥风，扬眉淡笑，指枪问穷寇，谁尚敢与我一战否？苍天弃吾，吾宁成魔；天要灭我，我便逆天。世道尽灭,天地混沌,又与我何干。脚踩生灵，手掌生死，传说不朽，王者不败。雄鹰下山，猛虎冲天，谁主沉浮，唯我王帆。';
+            var arr=str.split('');
+            for(var i=0; i<arr.length; i++){
+                var oLi=document.createElement('li');
+                oLi.innerHTML=arr[i];
+                oList.appendChild(oLi);
             }
-            var count=0;
-            setInterval(function () {
-                count++;
-                $('li').eq(count).stop().animate({'opacity':'1'});
-            },100)
+            var aLi=oList.children;
+            var i=1;
+            var timer=setInterval(function () {
+                i++;
+                aLi[i].style.opacity=1;
+                if(i>str.length){
+                    clearInterval(timer);
+                    oA.pause();
+                }
+            },100);
         })
+
+
+
     </script>
 </head>
 <body>
+<!--首屏-->
 <ul id="list">
-    <li>&nbsp;&nbsp;&nbsp;</li>
+    <audio autoplay loop src=audio/539120cd46a8e.mp3></audio>
+
 </ul>
 </body>
 </html>
